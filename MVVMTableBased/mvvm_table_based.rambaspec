@@ -1,0 +1,22 @@
+# Template information section
+name: "mvvm_table_based"
+summary: "MVVM module template with UIViewController"
+author: "Avvakumov Dmitry"
+version: "0.1.0"
+license: "MIT"
+
+# The declarations for code files
+code_files:
+# Assembly layer
+- {name: assembly/Assembly.h, path: Code/assembly/assembly.h.liquid}
+- {name: assembly/Assembly.m, path: Code/assembly/assembly.m.liquid}
+
+# View layer
+# - {name: view/protocol/ViewInput.h, path: Code/view/view_input.h.liquid}
+# - {name: view/protocol/ViewOutput.h, path: Code/view/view_output.h.liquid}
+# - {name: view/ViewController.h, path: Code/view/viewcontroller.h.liquid}
+# - {name: view/ViewController.m, path: Code/view/viewcontroller.m.liquid}
+
+# Template dependencies
+# dependencies:
+# - OCMock

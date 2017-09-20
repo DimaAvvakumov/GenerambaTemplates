@@ -1,0 +1,16 @@
+{% include 'header' %}
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+/**
+ @author {{ developer.name }}
+
+ {{ module_info.description }}
+ */
+@interface {{ prefix }}{{ module_info.name }}Assembly : NSObject
+
++ (UIViewController *)assemblyWithNoData;
+
+@end
+

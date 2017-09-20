@@ -1,0 +1,36 @@
+{% include 'header' %}
+
+#import "{{ prefix }}{{ module_info.name }}Assambly.h"
+
+#import "{{ prefix }}{{ module_info.name }}Protocols.h"
+
+#import "{{ prefix }}{{ module_info.name }}ViewController.h"
+#import "{{ prefix }}{{ module_info.name }}ViewModel.h"
+
+
+@implementation {{ prefix }}{{ module_info.name }}Assambly
+
++ (UIViewController *)assemblyWithNoData {
+    
+    /* view */
+    {{ prefix }}{{ module_info.name }}ViewController *viewController = [{{ prefix }}{{ module_info.name }}ViewController new];
+    
+    /* model */
+    {{ prefix }}{{ module_info.name }}ViewModel *viewModel = [{{ prefix }}{{ module_info.name }}ViewModel new];
+    
+    /* router */
+    // {{ prefix }}{{ module_info.name }}Router *router = [{{ prefix }}{{ module_info.name }}Router new];
+    
+    /* assembly */
+    viewController.viewModel = viewModel;
+    // viewController.router = router;
+    viewModel.view = viewController;
+    // viewModel.router = router;
+    // router.view = viewController;
+    // router.viewModel = viewModel;
+    
+    return viewController;
+}
+
+@end
+
