@@ -1,0 +1,78 @@
+{% include 'header' %}
+
+#import "{{ prefix }}{{ module_info.name }}ViewController.h"
+
+// frameworks
+#import <ALLocalizedManager/ALLocalizedManager.h>
+#import <DMTableTools/DMTableTools.h>
+
+// categories
+#import "AppLayouts.h"
+#import "UIViewController+ApplicationNavigation.h"
+#import "UIViewController+CWStatusBarNotification.h"
+
+// managers
+#import "StyleKit+Additions.h"
+#import "ApplicationStateManager.h"
+
+@interface {{ prefix }}{{ module_info.name }}ViewController ()
+
+@end
+
+@implementation {{ prefix }}{{ module_info.name }}ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self configureUI];
+    [self configureTableView];
+    
+    [self.viewModel viewIsReady];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Rotation
+
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+#pragma mark - Navigation
+
+- (BOOL)an_setupNavigation {
+    return YES;
+}
+
+- (BOOL)an_setupMenuButton {
+    return YES;
+}
+
+- (NSString *)an_title {
+    return [ALLocalizedStringGeneral(@"{{ prefix }}{{ module_info.name }}:Main", nil) uppercaseString];
+}
+
+#pragma mark - Status bar
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - Table data
+
+- (void)setDataItems:(NSArray<id<{{ prefix }}{{ module_info.name }}TableModelProtocol>> *)dataItems animated:(BOOL)animated {
+    
+    self.dataItems = dataItems;
+    
+    [self.tableTools setDataItems:dataItems withAnimation:DMTableToolsDefaultAnimation];
+}
+
+
+@end

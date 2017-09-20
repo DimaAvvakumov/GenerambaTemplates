@@ -1,0 +1,109 @@
+{% include 'header' %}
+
+#import "{{ prefix }}{{ module_info.name }}ViewController+TableData.h"
+
+#import "{{ prefix }}{{ module_info.name }}ViewController+TableData.h"
+
+#import "{{ prefix }}{{ module_info.name }}AllTableData.h"
+
+@implementation {{ prefix }}{{ module_info.name }}ViewController (TableData)
+
+- (void)configureTableView {
+    [self.tableView setDelegate:self];
+    [self.tableView setDataSource:self];
+    
+    [self setupTableTools];
+    
+    [{{ prefix }}{{ module_info.name }}TextTableCell registerCellForTable:self.tableView];
+    [{{ prefix }}{{ module_info.name }}LogoTableCell registerCellForTable:self.tableView];
+}
+
+//- (void)configureTableViewInset {
+//    UIEdgeInsets inset = self.tableView.contentInset;
+//    inset.bottom = 48.0;
+//    self.tableView.contentInset = inset;
+//}
+
+- (void)setupTableTools {
+    // weak self
+    __weak typeof (self) weakSelf = self;
+    
+    DMTableTools *tools = [DMTableTools toolsWithTableView:self.tableView];
+    tools.tableViewRowAnimation = UITableViewRowAnimationFade;
+    tools.onModifyVisibleCellsBlock = ^(NSArray<NSIndexPath *> *visibleModifiedIndexPaths) {
+        typeof (weakSelf) strongSelf = weakSelf;
+        if (strongSelf == nil) return ;
+        
+        if (visibleModifiedIndexPaths) {
+            [strongSelf reloadCellsAtIndexPath:visibleModifiedIndexPaths];
+        }
+    };
+    
+    self.tableTools = tools;
+}
+
+- (void)reloadCellsAtIndexPath:(NSArray<NSIndexPath *> *)indexPaths {
+    for (NSIndexPath *indexPath in indexPaths) {
+        id<{{ prefix }}{{ module_info.name }}TableModelProtocol> model = [self modelAtIndexPath:indexPath];
+        if (model == nil) continue;
+        
+        UITableViewCell<{{ prefix }}{{ module_info.name }}TableCellProtocol> *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        if (cell == nil) continue;
+        
+        [cell configureWithModel:model];
+    }
+}
+
+#pragma mark - Data
+
+- (id<{{ prefix }}{{ module_info.name }}TableModelProtocol>)modelAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray <id<{{ prefix }}{{ module_info.name }}TableModelProtocol>> *dataItems = self.dataItems;
+    if (dataItems == nil) return nil;
+    
+    NSInteger index = indexPath.row;
+    NSUInteger count = [dataItems count];
+    
+    if (index >= count) return nil;
+    
+    return [dataItems objectAtIndex:index];
+}
+
+#pragma mark - UITableViewDelegate, UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.dataItems == nil) return 0;
+    
+    return [self.dataItems count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<{{ prefix }}{{ module_info.name }}TableModelProtocol> model = [self modelAtIndexPath:indexPath];
+    if (model == nil) return 64.0;
+    
+    return [model estimatedHeight];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<{{ prefix }}{{ module_info.name }}TableModelProtocol> model = [self modelAtIndexPath:indexPath];
+    if (model == nil) return [UITableViewCell new];
+    
+    UITableViewCell<{{ prefix }}{{ module_info.name }}TableCellProtocol> *cell = [tableView dequeueReusableCellWithIdentifier:model.cellIdentifier forIndexPath:indexPath];
+    [cell configureWithModel:model];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    id model = [self modelAtIndexPath:indexPath];
+    if (model == nil) return;
+    
+    [self.viewModel didSelectModel:model];
+}
+
+@end

@@ -1,0 +1,24 @@
+{% include 'header' %}
+
+#ifndef {{ prefix }}{{ module_info.name }}Protocols_h
+#define {{ prefix }}{{ module_info.name }}Protocols_h
+
+@protocol {{ prefix }}{{ module_info.name }}TableModelProtocol;
+
+
+@protocol {{ prefix }}{{ module_info.name }}ViewModelProtocol <NSObject>
+@required
+
+/* init */
+- (void)viewIsReady;
+
+@end
+
+
+@protocol {{ prefix }}{{ module_info.name }}ViewControllerProtocol <NSObject>
+
+- (void)setDataItems:(NSArray<id<{{ prefix }}{{ module_info.name }}TableModelProtocol>> *)dataItems animated:(BOOL)animated;
+
+@end
+
+#endif /* {{ prefix }}{{ module_info.name }}Protocols_h */

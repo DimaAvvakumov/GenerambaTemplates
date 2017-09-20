@@ -1,0 +1,12 @@
+{% include 'header' %}
+
+#import "{{ prefix }}{{ module_info.name }}ViewController.h"
+
+#import "{{ prefix }}{{ module_info.name }}TableProtocols.h"
+
+@interface {{ prefix }}{{ module_info.name }}ViewController (TableData)<UITableViewDelegate, UITableViewDataSource>
+
+- (void)configureTableView;
+- (id<{{ prefix }}{{ module_info.name }}TableModelProtocol>)modelAtIndexPath:(NSIndexPath *)indexPath;
+
+@end

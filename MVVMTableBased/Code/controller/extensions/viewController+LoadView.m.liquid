@@ -1,0 +1,87 @@
+{% include 'header' %}
+
+#import "{{ prefix }}{{ module_info.name }}ViewController+LoadView.h"
+
+/* managers */
+#import "DesignManager.h"
+#import "StyleKit+Additions.h"
+
+/* views */
+#import "GradientView.h"
+#import "ProgressCloudsView.h"
+
+#import "AppLayouts.h"
+
+@implementation {{ prefix }}{{ module_info.name }}ViewController (LoadView)
+
+- (void)loadView {
+    CGRect viewFrame = CGRectZero;
+    viewFrame.size = [UIScreen mainScreen].bounds.size;
+    UIView *view = [[UIView alloc] initWithFrame:viewFrame];
+    view.backgroundColor = [UIColor whiteColor];
+    
+    /* assign view */
+    self.view = view;
+    
+    /* gradient */
+    [self loadView_appendGradientView];
+    
+    /* table view */
+    [self loadView_appendTableView];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+}
+
+#pragma mark - Gradient
+
+- (void)loadView_appendGradientView {
+    
+    /* views */
+    UIView *rootView = self.view;
+    CGRect rootFrame = rootView.frame;
+    
+    /* frame */
+    CGRect viewFrame = CGRectZero;
+    viewFrame.size = rootFrame.size;
+    
+    /* view */
+    GradientView *view = [[GradientView alloc] initWithFrame:viewFrame];
+    view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    view.firstColor = [StyleKit notify_gradientFirstColor];
+    view.finishColor = [StyleKit notify_gradientLastColor];
+    
+    /* append */
+    [rootView addSubview:view];
+    
+    /* assign */
+    // no assign
+}
+
+#pragma mark - Table view
+
+- (void)loadView_appendTableView {
+    if (self.tableView) return;
+    
+    /* views */
+    UIView *rootView = self.view;
+    CGRect rootFrame = rootView.frame;
+    
+    /* frame */
+    CGRect viewFrame = CGRectZero;
+    viewFrame.size = rootFrame.size;
+    
+    /* view */
+    UITableView *view = [[UITableView alloc] initWithFrame:viewFrame style:UITableViewStylePlain];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    view.backgroundColor = [UIColor clearColor];
+    
+    /* append */
+    [rootView addSubview:view];
+    
+    /* assign */
+    self.tableView = view;
+}
+
+@end

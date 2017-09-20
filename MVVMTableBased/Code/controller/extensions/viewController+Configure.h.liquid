@@ -1,0 +1,9 @@
+{% include 'header' %}
+
+#import "{{ prefix }}{{ module_info.name }}ViewController.h"
+
+@interface {{ prefix }}{{ module_info.name }}ViewController (Configure)
+
+- (void)configureUI;
+
+@end

@@ -1,0 +1,24 @@
+{% include 'header' %}
+
+#import <UIKit/UIKit.h>
+#import <DMTableTools/DMTableTools.h>
+
+#import "{{ prefix }}{{ module_info.name }}Protocols.h"
+#import "{{ prefix }}{{ module_info.name }}TableProtocols.h"
+
+@interface {{ prefix }}{{ module_info.name }}ViewController : UIViewController <{{ prefix }}{{ module_info.name }}ViewControllerProtocol>
+
+@property (strong, nonatomic) id<{{ prefix }}{{ module_info.name }}ViewModelProtocol> viewModel;
+
+#pragma mark - Outlet
+@property (strong, nonatomic) UITableView *tableView;
+
+#pragma mark - Table data
+@property (strong, nonatomic) DMTableTools *tableTools;
+@property (strong, nonatomic) NSArray <id<{{ prefix }}{{ module_info.name }}TableModelProtocol>> *dataItems;
+
+@end
+
+#import "{{ prefix }}{{ module_info.name }}ViewController+LoadView.h"
+#import "{{ prefix }}{{ module_info.name }}ViewController+Configure.h"
+#import "{{ prefix }}{{ module_info.name }}ViewController+TableData.h"
