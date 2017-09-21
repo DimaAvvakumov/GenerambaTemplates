@@ -1,0 +1,41 @@
+{% include 'header' %}
+
+#import "{{ prefix }}{{ module_info.name }}ViewModel+RestoreData.h"
+
+#import <ALLocalizedManager/ALLocalizedManager.h>
+
+/* table data models */
+#import "{{ prefix }}{{ module_info.name }}AllTableData.h"
+
+/* models */
+#import "{{ prefix }}{{ module_info.name }}InputData.h"
+
+@implementation {{ prefix }}{{ module_info.name }}ViewModel (RestoreData)
+
+- (void)restoreTableDataAnimated:(BOOL)animated {
+    {{ prefix }}{{ module_info.name }}InputData *inputData = self.inputData;
+    if (inputData == nil) return;
+    
+    /* Data Items */
+    NSMutableArray *dataItems = [NSMutableArray arrayWithCapacity:10];
+    
+    [self appendSummaryData:dataItems];
+    
+    [self.view setDataItems:dataItems animated:animated];
+}
+
+#pragma mark - Summary
+
+- (void)appendSummaryData:(NSMutableArray *)dataItems {
+    {{ prefix }}{{ module_info.name }}InputData *inputData = self.inputData;
+    
+    /* model */
+    // {{ prefix }}{{ module_info.name }}SummaryTableModel *model = [{{ prefix }}{{ module_info.name }}SummaryTableModel new];
+    // model.identifier = @"summary";
+    // model.orderNum = [inputData orderNumberFormatterString];
+    // model.serviceNum = [inputData serviceNumberFormatterString];
+    
+    // [dataItems addObject:model];
+}
+
+@end

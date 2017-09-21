@@ -8,15 +8,35 @@ license: "MIT"
 # The declarations for code files
 code_files:
 # Protocol layer
-- {name: protocol.h, path: Code/protocols.h.liquid}
+- {name: Protocols.h, path: Code/protocols.h.liquid}
+- {name: tableData/allTableData.h, path: Code/tableData/allTableData.h.liquid}
+- {name: tableData/tableProtocols.h, path: Code/tableData/tableProtocols.h.liquid}
+
+# Input layer
+- {name: input/InputData.h, path: Code/input/inputData.h.liquid}
+- {name: input/InputData.m, path: Code/input/inputData.m.liquid}
 
 # Assembly layer
 - {name: assembly/Assembly.h, path: Code/assembly/assembly.h.liquid}
 - {name: assembly/Assembly.m, path: Code/assembly/assembly.m.liquid}
 
 # View layer
-# - {name: controller/ViewController.h, path: Code/controller/viewController.h.liquid}
-# - {name: controller/ViewController.m, path: Code/controller/viewController.m.liquid}
+- {name: controller/ViewController.h, path: Code/controller/viewController.h.liquid}
+- {name: controller/ViewController.m, path: Code/controller/viewController.m.liquid}
+- {name: controller/extensions/ViewController+Configure.h, path: Code/controller/extensions/viewController+Configure.h.liquid}
+- {name: controller/extensions/ViewController+Configure.m, path: Code/controller/extensions/viewController+Configure.m.liquid}
+- {name: controller/extensions/ViewController+LoadView.h, path: Code/controller/extensions/viewController+LoadView.h.liquid}
+- {name: controller/extensions/ViewController+LoadView.m, path: Code/controller/extensions/viewController+LoadView.m.liquid}
+- {name: controller/extensions/ViewController+TableData.h, path: Code/controller/extensions/viewController+TableData.h.liquid}
+- {name: controller/extensions/ViewController+TableData.m, path: Code/controller/extensions/viewController+TableData.m.liquid}
+
+# Model View layer
+- {name: viewModel/ViewModel.h, path: Code/viewModel/viewModel.h.liquid}
+- {name: viewModel/ViewModel.m, path: Code/viewModel/viewModel.m.liquid}
+- {name: viewModel/extensions/ViewModel+DownloadData.h, path: Code/viewModel/extensions/viewModel+DownloadData.h.liquid}
+- {name: viewModel/extensions/ViewModel+DownloadData.m, path: Code/viewModel/extensions/viewModel+DownloadData.m.liquid}
+- {name: viewModel/extensions/ViewModel+RestoreData.h, path: Code/viewModel/extensions/viewModel+RestoreData.h.liquid}
+- {name: viewModel/extensions/ViewModel+RestoreData.m, path: Code/viewModel/extensions/viewModel+RestoreData.m.liquid}
 
 # Template dependencies
 # dependencies:

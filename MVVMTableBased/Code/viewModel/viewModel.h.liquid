@@ -1,0 +1,18 @@
+{% include 'header' %}
+
+#import <Foundation/Foundation.h>
+
+#import "{{ prefix }}{{ module_info.name }}Protocols.h"
+
+@class {{ prefix }}{{ module_info.name }}InputData;
+
+@interface {{ prefix }}{{ module_info.name }}ViewModel : NSObject <{{ prefix }}{{ module_info.name }}ViewModelProtocol>
+
+@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}InputData *inputData;
+
+@property (strong, nonatomic) id<{{ prefix }}{{ module_info.name }}ViewControllerProtocol> view;
+
+@end
+
+#import "{{ prefix }}{{ module_info.name }}ViewModel+RestoreData.h"
+#import "{{ prefix }}{{ module_info.name }}ViewModel+DownloadData.h"

@@ -14,8 +14,8 @@
     
     [self setupTableTools];
     
-    [{{ prefix }}{{ module_info.name }}TextTableCell registerCellForTable:self.tableView];
-    [{{ prefix }}{{ module_info.name }}LogoTableCell registerCellForTable:self.tableView];
+    // [{{ prefix }}{{ module_info.name }}TextTableCell registerCellForTable:self.tableView];
+    // [{{ prefix }}{{ module_info.name }}LogoTableCell registerCellForTable:self.tableView];
 }
 
 //- (void)configureTableViewInset {
@@ -103,7 +103,7 @@
     id model = [self modelAtIndexPath:indexPath];
     if (model == nil) return;
     
-    [self.viewModel didSelectModel:model];
+    // [self.viewModel didSelectModel:model];
 }
 
 @end

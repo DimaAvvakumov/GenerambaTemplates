@@ -1,0 +1,35 @@
+{% include 'header' %}
+
+#import "{{ prefix }}{{ module_info.name }}ViewModel+DownloadData.h"
+
+// #import "UIViewController+CWStatusBarNotification.h"
+
+// #import "NotifyNetworkHelper.h"
+
+@implementation {{ prefix }}{{ module_info.name }}ViewModel (DownloadData)
+
+- (void)downloadData {
+    // weak self
+//    __weak typeof (self) weakSelf = self;
+    
+//    [self.notifyNetworking nh_loadNotificationsCountWithFinishBlock:^(NotifyCountModel *model, NSError *error) {
+//        typeof (weakSelf) strongSelf = weakSelf;
+//        if (strongSelf == nil) return ;
+//        
+//        /* error */
+//        if (error) {
+//            [self.view displayError:error];
+//            return;
+//        }
+//        
+//        /* model */
+//        if (model) {
+//            strongSelf.notifyCountModel = model;
+//            
+//            [strongSelf restoreTableDataAnimated:YES];
+//        }
+//    }];
+
+}
+
+@end

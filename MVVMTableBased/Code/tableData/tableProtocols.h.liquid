@@ -1,0 +1,45 @@
+{% include 'header' %}
+
+#import <DMTableTools/DMTableTools.h>
+
+#ifndef {{ prefix }}{{ module_info.name }}TableProtocols_h
+#define {{ prefix }}{{ module_info.name }}TableProtocols_h
+
+
+@protocol {{ prefix }}{{ module_info.name }}TableModelProtocol <DMTableToolsModel>
+
+#pragma mark Identifier
+/**
+    @brief Identifier must be unique by all table models
+
+    Example: "head-news-1234"
+*/
+- (NSString *)identifier;
+
+#pragma mark Cell identifer
+/**
+    @brief Unique cell identifier for this model
+
+    Example: "NewsHead"
+*/
+- (NSString *)cellIdentifier;
+
+#pragma mark Table info
+- (CGFloat)estimatedHeight;
+
+@end
+
+
+
+@protocol {{ prefix }}{{ module_info.name }}TableCellProtocol <NSObject>
+
+@required
++ (void)registerCellForTable:(UITableView *)tableView;
+
+- (void)configureWithModel:(id<{{ prefix }}{{ module_info.name }}TableModelProtocol>)model;
+
+@end
+
+
+
+#endif /* {{ prefix }}{{ module_info.name }}TableProtocols_h */

@@ -1,0 +1,62 @@
+{% include 'header' %}
+
+#import "{{ prefix }}{{ module_info.name }}ViewModel.h"
+
+#import <ALLocalizedManager/ALLocalizedManager.h>
+
+#import "{{ prefix }}{{ module_info.name }}AllTableData.h"
+
+/* models */
+#import "{{ prefix }}{{ module_info.name }}InputData.h"
+
+@interface {{ prefix }}{{ module_info.name }}ViewModel()
+
+@end
+
+@implementation {{ prefix }}{{ module_info.name }}ViewModel
+
+#pragma mark - Init viewModel
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
+- (void)viewIsReady {
+
+    [self restoreTableDataAnimated:NO];
+}
+
+#pragma mark - Input data
+
+- (void)setInputData:({{ prefix }}{{ module_info.name }}InputData *)inputData {
+    /* reset data */
+    _inputData = nil;
+    
+    /* check inputData */
+    if (inputData == nil) return;
+    
+    /* check other data and return if necessary */
+    // SomeModel *someModel = inputData.someModel;
+    // if (someModel == nil) return;
+        
+    /* bind */
+    _inputData = inputData;
+    // self.someModel = someModel;
+}
+
+#pragma mark - Actions
+
+// - (void)closeAction {
+//     {{ prefix }}{{ module_info.name }}InputData *inputData = self.inputData;
+//     if (inputData == nil) return;
+//     
+//     if (inputData.onCloseBlock) {
+//         inputData.onCloseBlock();
+//     }
+// }
+
+@end
