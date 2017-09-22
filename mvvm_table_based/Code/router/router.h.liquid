@@ -1,0 +1,13 @@
+{% include 'header' %}
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+#import "{{ prefix }}{{ module_info.name }}Protocols.h"
+
+@interface {{ prefix }}{{ module_info.name }}Router : NSObject <{{ prefix }}{{ module_info.name }}RouterProtocol>
+
+@property (weak, nonatomic) UIViewController<{{ prefix }}{{ module_info.name }}ViewControllerProtocol> *view;
+@property (weak, nonatomic) id<{{ prefix }}{{ module_info.name }}ViewModelProtocol> viewModel;
+
+@end

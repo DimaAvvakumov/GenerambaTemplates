@@ -17,6 +17,8 @@
 
 @interface {{ prefix }}{{ module_info.name }}ViewController ()
 
+@property (assign, nonatomic) BOOL isDownloading;
+
 @end
 
 @implementation {{ prefix }}{{ module_info.name }}ViewController
@@ -28,6 +30,7 @@
     [self configureTableView];
     
     [self.viewModel viewIsReady];
+    [self updateTableAppereanceAnimated:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,7 +75,51 @@
     self.dataItems = dataItems;
     
     [self.tableTools setDataItems:dataItems withAnimation:DMTableToolsDefaultAnimation];
+    [self updateTableAppereanceAnimated:animated];
 }
+
+#pragma mark - Appereance
+
+- (void)updateTableAppereanceAnimated:(BOOL)animated {
+    BOOL isEmpty = [self.tableTools isEmpty];
+    BOOL isRequest = self.isDownloading;
+    
+    BOOL showIndicator = (isEmpty && isRequest) ? YES : NO;
+    BOOL showTable = (!showIndicator) ? YES : NO;
+    
+    CGFloat tableAlpha = (showTable) ? 1.0 : 0.0;
+    CGFloat indicatorAlpha = (showIndicator) ? 1.0 : 0.0;
+    
+    if (showIndicator) {
+        [self.activityIndicator startAnimating];
+    }
+    
+    if (animated) {
+        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            
+            self.tableView.alpha = tableAlpha;
+            self.activityIndicator.alpha = indicatorAlpha;
+        } completion:^(BOOL finished) {
+            BOOL isRequest = self.isDownloading;
+            if (!isRequest) {
+                [self.activityIndicator stopAnimating];
+            }
+        }];
+    } else {
+        self.tableView.alpha = tableAlpha;
+        self.activityIndicator.alpha = indicatorAlpha;
+        if (!showIndicator) {
+            [self.activityIndicator stopAnimating];
+        }
+    }
+    
+}
+
+//- (void)setIsDownloading:(BOOL)isDownloading animated:(BOOL)animated {
+//    self.isDownloading = isDownloading;
+//    
+//    [self updateTableAppereanceAnimated:animated];
+//}
 
 
 @end

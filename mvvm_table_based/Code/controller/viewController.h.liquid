@@ -9,9 +9,11 @@
 @interface {{ prefix }}{{ module_info.name }}ViewController : UIViewController <{{ prefix }}{{ module_info.name }}ViewControllerProtocol>
 
 @property (strong, nonatomic) id<{{ prefix }}{{ module_info.name }}ViewModelProtocol> viewModel;
+@property (strong, nonatomic) id<{{ prefix }}{{ module_info.name }}RouterProtocol> router;
 
 #pragma mark - Outlet
 @property (strong, nonatomic) UITableView *tableView;
+// @property (strong, nonatomic) IBOutlet UIActivityIndicator *activityIndicator;
 
 #pragma mark - Table data
 @property (strong, nonatomic) DMTableTools *tableTools;

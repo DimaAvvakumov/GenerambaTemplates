@@ -18,7 +18,20 @@
 
 @protocol {{ prefix }}{{ module_info.name }}ViewControllerProtocol <NSObject>
 
+#pragma mark - Data
 - (void)setDataItems:(NSArray<id<{{ prefix }}{{ module_info.name }}TableModelProtocol>> *)dataItems animated:(BOOL)animated;
+
+#pragma mark - Appereance
+// - (void)setIsDownloading:(BOOL)isDownloading animated:(BOOL)animated;
+
+@end
+
+
+@protocol {{ prefix }}{{ module_info.name }}RouterProtocol <NSObject>
+@required
+
+#pragma mark - Router
+// - (void)openControllerByModel:({{ prefix }}{{ module_info.name }}Model *)model;
 
 @end
 
