@@ -1,6 +1,7 @@
 {% include 'header' %}
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #import "{{ prefix }}{{ module_info.name }}Protocols.h"
 
@@ -10,7 +11,7 @@
 
 @property (strong, nonatomic) {{ prefix }}{{ module_info.name }}InputData *inputData;
 
-@property (weak, nonatomic) id<{{ prefix }}{{ module_info.name }}ViewControllerProtocol> view;
+@property (weak, nonatomic) UIViewController<{{ prefix }}{{ module_info.name }}ViewControllerProtocol> *view;
 
 @end
 
