@@ -9,8 +9,8 @@ license: "MIT"
 code_files:
 # Protocol layer
 - {name: Protocols.h, path: Code/protocols.h.liquid}
-- {name: tableData/allTableData.h, path: Code/tableData/allTableData.h.liquid}
-- {name: tableData/tableProtocols.h, path: Code/tableData/tableProtocols.h.liquid}
+- {name: tableData/AllTableData.h, path: Code/tableData/allTableData.h.liquid}
+- {name: tableData/TableProtocols.h, path: Code/tableData/tableProtocols.h.liquid}
 
 # Input layer
 - {name: input/InputData.h, path: Code/input/inputData.h.liquid}
