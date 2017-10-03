@@ -7,16 +7,18 @@
 #import "{{ prefix }}{{ module_info.name }}ViewController.h"
 #import "{{ prefix }}{{ module_info.name }}ViewModel.h"
 
+#import "{{ prefix }}{{ module_info.name }}InputData.h"
 
 @implementation {{ prefix }}{{ module_info.name }}Assembly
 
-+ (UIViewController *)assemblyWithNoData {
++ (UIViewController *)assemblyWithInputData:({{ prefix }}{{ module_info.name }}InputData *)inputData {
     
     /* view */
     {{ prefix }}{{ module_info.name }}ViewController *viewController = [{{ prefix }}{{ module_info.name }}ViewController new];
     
     /* model */
     {{ prefix }}{{ module_info.name }}ViewModel *viewModel = [{{ prefix }}{{ module_info.name }}ViewModel new];
+    viewModel.inputData = inputData;
     
     /* router */
     // {{ prefix }}{{ module_info.name }}Router *router = [{{ prefix }}{{ module_info.name }}Router new];

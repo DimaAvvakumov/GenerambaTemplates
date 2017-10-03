@@ -3,6 +3,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "{{ prefix }}{{ module_info.name }}InputData.h"
+
 /**
  @author {{ developer.name }}
 
@@ -10,7 +12,7 @@
  */
 @interface {{ prefix }}{{ module_info.name }}Assembly : NSObject
 
-+ (UIViewController *)assemblyWithNoData;
++ (UIViewController *)assemblyWithInputData:({{ prefix }}{{ module_info.name }}InputData *)inputData;
 
 @end
 

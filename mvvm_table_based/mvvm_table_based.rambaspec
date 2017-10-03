@@ -2,7 +2,7 @@
 name: "mvvm_table_based"
 summary: "MVVM module template with UIViewController"
 author: "Avvakumov Dmitry"
-version: "0.1.0"
+version: "0.2.0"
 license: "MIT"
 
 # The declarations for code files
@@ -37,6 +37,10 @@ code_files:
 - {name: viewModel/extensions/ViewModel+DownloadData.m, path: Code/viewModel/extensions/viewModel+DownloadData.m.liquid}
 - {name: viewModel/extensions/ViewModel+RestoreData.h, path: Code/viewModel/extensions/viewModel+RestoreData.h.liquid}
 - {name: viewModel/extensions/ViewModel+RestoreData.m, path: Code/viewModel/extensions/viewModel+RestoreData.m.liquid}
+
+# Router layer
+- {name: router/Router.h, path: Code/router/router.h.liquid}
+- {name: router/Router.m, path: Code/router/router.m.liquid}
 
 # Template dependencies
 # dependencies:
