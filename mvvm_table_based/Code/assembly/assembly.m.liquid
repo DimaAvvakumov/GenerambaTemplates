@@ -6,6 +6,7 @@
 
 #import "{{ prefix }}{{ module_info.name }}ViewController.h"
 #import "{{ prefix }}{{ module_info.name }}ViewModel.h"
+#import "{{ prefix }}{{ module_info.name }Router.h"
 
 #import "{{ prefix }}{{ module_info.name }}InputData.h"
 
@@ -25,11 +26,11 @@
     
     /* assembly */
     viewController.viewModel = viewModel;
-    // viewController.router = router;
+    viewController.router = router;
     viewModel.view = viewController;
-    // viewModel.router = router;
-    // router.view = viewController;
-    // router.viewModel = viewModel;
+    viewModel.router = router;
+    router.view = viewController;
+    router.viewModel = viewModel;
     
     return viewController;
 }
