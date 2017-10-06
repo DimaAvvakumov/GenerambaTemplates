@@ -2,7 +2,7 @@
 name: "mvvm_table_based"
 summary: "MVVM module template with UIViewController"
 author: "Avvakumov Dmitry"
-version: "0.3.0"
+version: "0.3.1"
 license: "MIT"
 
 # The declarations for code files
