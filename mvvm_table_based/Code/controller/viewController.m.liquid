@@ -72,8 +72,6 @@
 
 - (void)setDataItems:(NSArray<id<{{ prefix }}{{ module_info.name }}TableModelProtocol>> *)dataItems animated:(BOOL)animated {
     
-    self.dataItems = dataItems;
-    
     [self.tableTools setDataItems:dataItems withAnimation:DMTableToolsDefaultAnimation];
     [self updateTableAppereanceAnimated:animated];
 }

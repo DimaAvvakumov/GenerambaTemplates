@@ -57,27 +57,21 @@
 #pragma mark - Data
 
 - (id<{{ prefix }}{{ module_info.name }}TableModelProtocol>)modelAtIndexPath:(NSIndexPath *)indexPath {
-    NSArray <id<{{ prefix }}{{ module_info.name }}TableModelProtocol>> *dataItems = self.dataItems;
-    if (dataItems == nil) return nil;
-    
-    NSInteger index = indexPath.row;
-    NSUInteger count = [dataItems count];
-    
-    if (index >= count) return nil;
-    
-    return [dataItems objectAtIndex:index];
+    DMTableTools *tools = self.tableTools;
+    return (id<{{ prefix }}{{ module_info.name }}TableModelProtocol>) [tools modelAtIndexPath:indexPath];
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.dataItems == nil) return 0;
+    DMTableTools *tools = self.tableTools;
     
-    return [self.dataItems count];
+    return [tools numberOfRowsInSection:section];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    id<{{ prefix }}{{ module_info.name }}TableModelProtocol> model = [self modelAtIndexPath:indexPath];
+    DMTableTools *tools = self.tableTools;
+    id<{{ prefix }}{{ module_info.name }}TableModelProtocol> model = (id<{{ prefix }}{{ module_info.name }}TableModelProtocol>) [tools modelAtIndexPath:indexPath];
     if (model == nil) return 64.0;
     
     return [model estimatedHeight];
