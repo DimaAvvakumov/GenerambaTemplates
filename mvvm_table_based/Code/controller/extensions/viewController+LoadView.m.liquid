@@ -8,7 +8,6 @@
 
 /* views */
 #import "GradientView.h"
-#import "ProgressCloudsView.h"
 
 #import "AppLayouts.h"
 
@@ -22,10 +21,7 @@
     
     /* assign view */
     self.view = view;
-    
-    /* gradient */
-    [self loadView_appendGradientView];
-    
+        
     /* table view */
     [self loadView_appendTableView];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];

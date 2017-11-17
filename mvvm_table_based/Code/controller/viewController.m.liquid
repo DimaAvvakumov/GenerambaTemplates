@@ -3,7 +3,6 @@
 #import "{{ prefix }}{{ module_info.name }}ViewController.h"
 
 // frameworks
-#import <ALLocalizedManager/ALLocalizedManager.h>
 #import <DMTableTools/DMTableTools.h>
 
 // categories
@@ -13,7 +12,6 @@
 
 // managers
 #import "StyleKit+Additions.h"
-#import "ApplicationStateManager.h"
 
 @interface {{ prefix }}{{ module_info.name }}ViewController ()
 
@@ -113,11 +111,11 @@
     
 }
 
-//- (void)setIsDownloading:(BOOL)isDownloading animated:(BOOL)animated {
-//    self.isDownloading = isDownloading;
-//    
-//    [self updateTableAppereanceAnimated:animated];
-//}
+- (void)setIsDownloading:(BOOL)isDownloading animated:(BOOL)animated {
+    self.isDownloading = isDownloading;
+    
+    [self updateTableAppereanceAnimated:animated];
+}
 
 
 @end
