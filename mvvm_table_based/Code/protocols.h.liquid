@@ -19,6 +19,7 @@
 @protocol {{ prefix }}{{ module_info.name }}ViewControllerProtocol <NSObject>
 
 #pragma mark - Data
+- (void)setTitle:(NSString *)title;
 - (void)setDataItems:(NSArray<id<{{ prefix }}{{ module_info.name }}TableModelProtocol>> *)dataItems animated:(BOOL)animated;
 
 #pragma mark - Appereance
